@@ -1,14 +1,14 @@
 --- 
-title: "Peaks and Pits"
+title: "Peaks and Pits 🏔 🕳️️"
 author: "Jamie Hudson"
 date: "2024-03-07"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+url: https://jamiehshare.github.io/peaks-pits-bookdown/index.html
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is a playbook of a Peaks and Pits project. The HTML output format for this example is bookdown::bs4_book, set in the _output.yml file.
+  This is a playbook of a Peaks and Pits project.
 biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
