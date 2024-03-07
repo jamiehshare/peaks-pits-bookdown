@@ -141,7 +141,7 @@ def print_2d_embeddings_per_epoch(embeddings, labels, title="Embeddings represen
 print_2d_embeddings_per_epoch(embeddings1, train_ds["label_text"], "Embeddings representation of training data")
 ```
 
-```{r, fig.cap = "Trained embedding model", echo = FALSE}
+```{r, fig.cap = "Trained embedding model", echo = FALSE, out.width=100%}
 knitr::include_graphics("./img/embedding_trained.png")
 ```
 
@@ -153,7 +153,7 @@ embeddings2 = paraphrase_model.model_body.encode(trainlist)
 print_2d_embeddings_per_epoch(embeddings2, train_ds["label_text"], "Embeddings representation of training data with untrained model")
 ```
 
-```{r, fig.cap = "Untrained embedding model", echo = FALSE}
+```{r, fig.cap = "Untrained embedding model", echo = FALSE, out.width=100%}
 knitr::include_graphics("./img/embedding_untrained.png")
 ```
 
