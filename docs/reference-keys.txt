@@ -19,3 +19,6 @@ step-six
 step-seven
 bertopic-to-find-high-level-peaks-and-pits
 step-eight
+resources
+previous-projects
+useful-reading
