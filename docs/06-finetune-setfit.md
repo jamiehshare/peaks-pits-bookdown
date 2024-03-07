@@ -4,7 +4,7 @@ The [SetFit documentation](https://huggingface.co/docs/setfit/index) provides a 
 
 Before training the SetFit model on our data we need to do some cleaning/wrangling on our fine-tuning datasets. Namely, we need to mask mentions of brand/product entities to avoid introducing bias- for example if a particular brand is predominantly mentioned in peak contexts in the training data, the model might learn to associate peak moments with that brand rather than learning the peak-language expressed in the text.
 
-To do this, we use the a model based on Facebook's RoBERTa model, `xlm-roberta-large-finetuned-conll03-english`, to perform NER recognition, and then mask the ORG and MISC entities using a `rivendell` function `rivendell::ner_brand_product()` in R.
+To do this, we use the a model based on Facebook's RoBERTa model, `xlm-roberta-large-finetuned-conll03-english`, to perform NER recognition, and then mask the ORG and MISC entities using a `rivendell` function `ner_brand_product()` in R.
 
 ```
 !pip install datasets
@@ -142,7 +142,7 @@ print_2d_embeddings_per_epoch(embeddings1, train_ds["label_text"], "Embeddings r
 ```
 
 <div class="figure">
-<img src="./img/embedding_trained.png" alt="Trained embedding model" width="508" />
+<img src="./img/embedding_trained.png" alt="Trained embedding model" width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-1)Trained embedding model</p>
 </div>
 
@@ -155,7 +155,7 @@ print_2d_embeddings_per_epoch(embeddings2, train_ds["label_text"], "Embeddings r
 ```
 
 <div class="figure">
-<img src="./img/embedding_untrained.png" alt="Untrained embedding model" width="508" />
+<img src="./img/embedding_untrained.png" alt="Untrained embedding model" width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-2)Untrained embedding model</p>
 </div>
 
