@@ -44,19 +44,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Background information</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">2</span> Introduction to Peaks and Pits</a></li>
-<li><a class="" href="high-level-overview.html"><span class="header-section-number">3</span> High-level overview</a></li>
-<li><a class="" href="step-one.html"><span class="header-section-number">4</span> Step 1: Obtain posts</a></li>
-<li><a class="active" href="step-two.html"><span class="header-section-number">5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li>
-<li><a class="" href="step-three.html"><span class="header-section-number">6</span> Step 3: The human touch- find the exemplars</a></li>
-<li><a class="" href="step-four.html"><span class="header-section-number">7</span> Step 4: Fine-tune the SetFit model</a></li>
-<li><a class="" href="step-five.html"><span class="header-section-number">8</span> Step 5: Run inference over all project data</a></li>
-<li><a class="" href="step-six.html"><span class="header-section-number">9</span> Step 6: The metal detector, GPT-3.5</a></li>
-<li><a class="" href="step-seven.html"><span class="header-section-number">10</span> Step 7: Downstream flourishes</a></li>
-<li><a class="" href="resources.html"><span class="header-section-number">11</span> Resources</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
@@ -69,48 +57,28 @@
 </h1>
 <p>Each peak and pit project we work on has the potential to introduce ‘domain’ specific language, which our model may not have seen before. This gives our model the best chance to identify emotional moments appropriate to the project/data at hand.</p>
 <p>The obvious case for this is with gaming specific language, where terms that don’t necessarily relate to an ‘obvious’ peak or pit moment could refer to one the gaming conversation, for example the terms/phrases “GG”, “camping”, “scrub”, and “goat” all have very specific meanings in this domain that differ from their use in everyday language.</p>
-<p>As SetFit is required for this, we use <code>python</code> based scripts or notebooks to run inference over a pre-fine-tuned model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used.</p>
-<p>We can load in our previous SetFit model (note this is project specific)…</p>
-<pre><code># Load in libraries:
-
-!pip install datasets sentence-transformers setfit
-
-# Load previous model
-setfit_model = SetFitModel.from_pretrained("path/to/previous/model")</code></pre>
-<p>… and load in our sample dataset (making sure we have a key value for each document, for example <code>universal_message_id</code>)…</p>
-<pre><code># Load in libraries
-import pandas as pd
-
-# Load in dataset
-sample_data = pd.read_csv("path/to/sample/data/filename.csv")
-
-# Prepare dataset
-
-## Convert text variable to list for inference
-text_list = sample_data['text_variable_name'].values.tolist()</code></pre>
-<p>… before running inference</p>
-<pre><code>## Predict the probabitilies for each label for each input of the list
-prediction = model.predict_proba(text_list)
-
-## Convert prediction output to a dataframe, specifying the names of the columns
-output_df = pd.DataFrame(prediction, columns = ['pit', 'peak', 'neither'])
-</code></pre>
-<p><strong>Note in this case the first column is pit, second column is peak, and third column is neither. For fine-tuning SetFit you provide column labels as a numeric rather than a character, and we’ve been setting Pit = 0, Peak = 1, and Neither = 2, which is why that’s the order of the columns. It is highly recommended this ordering is kept in future projects to keep this consistent and avoid headaches in the future</strong></p>
-<p>This output dataframe can then have the relevant <code>universal_message_id</code> appended to it (as the row order of <code>output_df</code> should match <code>sample_data</code>, then be saved to a csv and uploaded on to the Drive to an appropriate location within the project folder</p>
-<pre><code>## Append 'universal_message_id' column from sample_data to output_df
-output_df['universal_message_id'] = sample_data['universal_message_id']
-
-# Save the modified output_df to a CSV file
-output_df.to_csv("sample_predictions.csv", index = False)
-!cp "sample_predictions.csv" "appropriate/file/path/on/google/drive/in/project/directory/filename.csv"</code></pre>
-<p>A warning for this step is that SetFit does not work with empty strings in the input, so to account for this we can use the function <code>sample_data = sample_data.fillna('')</code> to convert empty strings to NA before converting to a list. Note that these empty strings are effectively wasted compute as by definition they will not contain a peak or a pit, but at this stage of the workflow I would not worry about being picky about which sample of ~600 posts are run at this stage.</p>
-<p>Now we have a <code>.csv</code> file with the probabilities each post is a peak, pit, or neither. From this we can join to our original dataframe via <code>universal_message_id</code> and select the classification label with the highest probability, providing us with a dataframe with all of the relevant information we need for the next steps (namely, <code>unviersal_message_id</code>, <code>message</code>, and peak/pit classification).</p>
-<div id="this-step-can-also-be-done-via-gpt-3.5-prompts-which-is-actually-what-we-did-for-706-and-what-i-recommend.-this-is-simpler-to-implement-but-not-as-scalable-and-has-the-drawback-of-being-a-prompt-based-classification-of-a-black-box-model-so-wanted-to-include-information-on-the-above-approach-for-completeness" class="section level4" number="5.0.0.1">
-<h4>
-<span class="header-section-number">5.0.0.1</span> <em>This step can also be done via GPT-3.5 prompts, which is actually what we did for 706 (and what I recommend). This is simpler to implement, but not as scalable and has the drawback of being a prompt based classification of a black-box model, so wanted to include information on the above approach for completeness</em><a class="anchor" aria-label="anchor" href="#this-step-can-also-be-done-via-gpt-3.5-prompts-which-is-actually-what-we-did-for-706-and-what-i-recommend.-this-is-simpler-to-implement-but-not-as-scalable-and-has-the-drawback-of-being-a-prompt-based-classification-of-a-black-box-model-so-wanted-to-include-information-on-the-above-approach-for-completeness"><i class="fas fa-link"></i></a>
-</h4>
-<p>For GPT-3.5, the initial steps remain the same- obtain a sample of ~600 posts of which ~1/3 are ‘positive’ as per Sprinklr’s classification, ~1/3 are ‘negative’ and ~1/3 are ‘neutral’.</p>
-<p>Then use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:</p>
+<p>There are two ways we can do this:</p>
+<ul>
+<li>Using the OpenAI API to access a GPT model</li>
+<li>Utilising a previously fine-tuned SetFit model from a past project</li>
+</ul>
+<p>I tend to suggest the OpenAI route, as it is simpler to implement (in my opinion). However, be aware if it not as scalable as using an old SetFit model and has the drawback of being a prompt based classification of a black-box model (as well as issues relating to cost and API stability). Despite this, I provide information on both routes below:</p>
+<p>Remember, the whole purpose of this step is to find posts that are a good representation of the style of posts/language use for peak and pits in this dataset.</p>
+<p>As such, I would suggest doing some small cleaning on a sample of the data, before taking a further sample. My guidelines would be:</p>
+<ul>
+<li>Take a sample of 5000 posts</li>
+<li>Remove any posts that have &lt; 10 words and &gt; 150 words</li>
+<li>Remove obvious spam posts using <code>limpiar_spam_grams()</code> (these spam posts are just wasted compute)</li>
+<li>Take a sample of ~600 posts of which ~1/3 are ‘positive’ as per Sprinklr’s classification, ~1/3 are ‘negative’ and ~1/3 are ‘neutral’</li>
+</ul>
+<p>As both routes have an embedding phase, we do not need to do stop word removal etc because that will be detrimental to the creation of the embeddings.</p>
+<p>There is no perfect number of exemplars to find per class. Whilst in general more exemplars (and hence more training data) is beneficial, having fewer but high quality labelled posts is far superior than more posts of poorer quality. I would say treat this step as “we have X time period to do this” rather than “we need X number of posts”.</p>
+<p>An additional important aspect of this step is the sentiment distribution of our exemplars for each peak/pit label. If we end up obtaining peaks that are only positive sentiment, pits that are only negative sentiment, and neither posts that are only neutral, there is a serious risk we fine-tune ourselves a glorified sentiment classifier. As such, it’s important to track posts that are clearly strong in sentiment, but are not themselves peaks or pits.</p>
+<div id="openai-route" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> OpenAI route<a class="anchor" aria-label="anchor" href="#openai-route"><i class="fas fa-link"></i></a>
+</h2>
+<p>After obtaining the appopriate dataset of ~600 posts, use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:</p>
 <pre><code>import openai
 import pandas as pd
 import tenacity
@@ -182,7 +150,7 @@ You are an emotionally intelligent assistant. Your task is to classify social me
 
             ###
 
-            Are the following posts a Peak or Pit moment, or are they neither? Provide the answer as "{Peak or Pit or Neither}"
+            Are the following posts a Peak or Pit moment, or are they neither? Provide the answer as "Peak or Pit or Neither"
 
                             """ + "````" + text_input + "````"},
                         ],
@@ -215,7 +183,7 @@ You are an emotionally intelligent assistant. Your task is to classify social me
 </li>
 <li>Perhaps update the few-shot examples provided. Whilst this isn’t the end of the world (as this step is only to find some exemplars rather than our full inference, changing these examples to something that is more likely to match the use cases present in the current dataset will improve performance.</li>
 </ol>
-<p>Similarly, at the end of this step we can read in the output and find our exemplars in R. The code to do this for finding ‘pits’ is below, but can be adapted for ‘peaks’:</p>
+<p>At the end of this step we can read in the output and find our exemplars in R sense checking the models output. The code to do this for finding ‘pits’ is below, but can be adapted for ‘peaks’ and ‘neither’ posts:</p>
 <pre><code># Pits
 read_csv("path/to/project/file/output_file_name.txt", col_names = F) %&gt;% 
   mutate(X1 = str_remove_all(X1, "Universal Message ID: "),
@@ -224,21 +192,66 @@ read_csv("path/to/project/file/output_file_name.txt", col_names = F) %&gt;%
   rename(universal_message_id = X1,
          peak_pit_class = X2) %&gt;% 
   left_join(path/to/sample/data/filename.csv, by = "universal_message_id") %&gt;% 
-  select(universal_message_id, message) </code></pre>
+  select(universal_message_id, message, sentiment) </code></pre>
+</div>
+<div id="setfit-route" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> 🤗 SetFit route<a class="anchor" aria-label="anchor" href="#setfit-route"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>If using model created in 725 or more recent, note the change at the bottom of the page</p>
+</blockquote>
+<p>As SetFit is required for this, we use <code>python</code> based scripts or notebooks to run inference over a pre-fine-tuned model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used.</p>
+<p>We can load in our previous SetFit model (note this is project specific)…</p>
+<pre><code># Load in libraries:
+
+!pip install datasets sentence-transformers setfit
+
+# Load previous model
+setfit_model = SetFitModel.from_pretrained("path/to/previous/model")</code></pre>
+<p>… and load in our sample dataset (making sure we have a key value for each document, for example <code>universal_message_id</code>)…</p>
+<pre><code># Load in libraries
+import pandas as pd
+
+# Load in dataset
+sample_data = pd.read_csv("path/to/sample/data/filename.csv")
+
+# Prepare dataset
+
+## Convert text variable to list for inference
+text_list = sample_data['text_variable_name'].values.tolist()</code></pre>
+<p>… before running inference</p>
+<pre><code>## Predict the probabitilies for each label for each input of the list
+prediction = model.predict_proba(text_list)
+
+## Convert prediction output to a dataframe, specifying the names of the columns
+output_df = pd.DataFrame(prediction, columns = ['pit', 'peak', 'neither'])
+</code></pre>
+<p><strong>Note in this case the first column is pit, second column is peak, and third column is neither. For fine-tuning SetFit you provide column labels as a numeric rather than a character, and we’ve been setting Pit = 0, Peak = 1, and Neither = 2, which is why that’s the order of the columns. It is highly recommended this ordering is kept in future projects to keep this consistent and avoid headaches in the future</strong></p>
+<p>This output dataframe can then have the relevant <code>universal_message_id</code> appended to it (as the row order of <code>output_df</code> should match <code>sample_data</code>, then be saved to a csv and uploaded on to the Drive to an appropriate location within the project folder</p>
+<pre><code>## Append 'universal_message_id' column from sample_data to output_df
+output_df['universal_message_id'] = sample_data['universal_message_id']
+
+# Save the modified output_df to a CSV file
+output_df.to_csv("sample_predictions.csv", index = False)
+!cp "sample_predictions.csv" "appropriate/file/path/on/google/drive/in/project/directory/filename.csv"</code></pre>
+<p>A warning for this step is that SetFit does not work with empty strings in the input, so to account for this we can use the function <code>sample_data = sample_data.fillna('')</code> to convert empty strings to NA before converting to a list.</p>
+<p>Now we have a <code>.csv</code> file with the probabilities each post is a peak, pit, or neither. From this we can join to our original dataframe via <code>universal_message_id</code> and select the classification label with the highest probability (Argmax), providing us with a dataframe with all of the relevant information we need for the next steps (namely, <code>universal_message_id</code>, <code>message</code>, ‘sentiment’, and peak/pit classification).</p>
+<p><strong>Note if using a model from 725 or more recent, the SetFit code has updated so we can directly obtain output classification labels rather than obtaining probabilities and needing to use R to get the labels using Argmax</strong></p>
+<pre><code>pred_labels = SETFIT_model.predict(df_text)</code></pre>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="step-one.html"><span class="header-section-number">4</span> Step 1: Obtain posts</a></div>
-<div class="next"><a href="step-three.html"><span class="header-section-number">6</span> Step 3: The human touch- find the exemplars</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#step-two"><span class="header-section-number">5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li></ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/04-get-exemplars.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/04-get-exemplars.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

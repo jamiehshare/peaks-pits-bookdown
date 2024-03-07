@@ -22,3 +22,6 @@ step-eight
 resources
 previous-projects
 useful-reading
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+setfit-route
+openai-route
