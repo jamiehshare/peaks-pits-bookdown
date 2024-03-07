@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 10 Step 7: BERTopic to find high-level peaks and pits | Peaks and Pits</title>
+<title>Chapter 10 Step 7: Downstream flourishes | Peaks and Pits</title>
 <meta name="author" content="Jamie Hudson">
-<meta name="description" content="So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate to. To do this, we employ topic modelling via...">
+<meta name="description" content="10.1 BERTopic to find high-level peaks and pits So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 10 Step 7: BERTopic to find high-level peaks and pits | Peaks and Pits">
+<meta property="og:title" content="Chapter 10 Step 7: Downstream flourishes | Peaks and Pits">
 <meta property="og:type" content="book">
-<meta property="og:description" content="So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate to. To do this, we employ topic modelling via...">
+<meta property="og:description" content="10.1 BERTopic to find high-level peaks and pits So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 10 Step 7: BERTopic to find high-level peaks and pits | Peaks and Pits">
-<meta name="twitter:description" content="So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate to. To do this, we employ topic modelling via...">
+<meta name="twitter:title" content="Chapter 10 Step 7: Downstream flourishes | Peaks and Pits">
+<meta name="twitter:description" content="10.1 BERTopic to find high-level peaks and pits So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.7/font.css" rel="stylesheet">
@@ -44,19 +44,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Background information</a></li>
-<li><a class="" href="intro.html"><span class="header-section-number">2</span> Introduction to Peaks and Pits</a></li>
-<li><a class="" href="high-level-overview.html"><span class="header-section-number">3</span> High-level overview</a></li>
-<li><a class="" href="step-one.html"><span class="header-section-number">4</span> Step 1: Obtain posts</a></li>
-<li><a class="" href="step-two.html"><span class="header-section-number">5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li>
-<li><a class="" href="step-three.html"><span class="header-section-number">6</span> Step 3: The human touch- find the exemplars</a></li>
-<li><a class="" href="step-four.html"><span class="header-section-number">7</span> Step 4: Fine-tune the SetFit model</a></li>
-<li><a class="" href="step-five.html"><span class="header-section-number">8</span> Step 5: Run inference over all project data</a></li>
-<li><a class="" href="step-six.html"><span class="header-section-number">9</span> Step 6: The metal detector, GPT-3.5</a></li>
-<li><a class="active" href="step-seven.html"><span class="header-section-number">10</span> Step 7: BERTopic to find high-level peaks and pits</a></li>
-<li><a class="" href="step-eight.html"><span class="header-section-number">11</span> Step 8: Brand Love Emotion States</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 10</span> Step 7: Downstream flourishes</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
@@ -65,24 +53,61 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="step-seven" class="section level1" number="10">
 <h1>
-<span class="header-section-number">10</span> Step 7: BERTopic to find high-level peaks and pits<a class="anchor" aria-label="anchor" href="#step-seven"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Step 7: Downstream flourishes<a class="anchor" aria-label="anchor" href="#step-seven"><i class="fas fa-link"></i></a>
 </h1>
+<div id="bertopic-to-find-high-level-peaks-and-pits" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> BERTopic to find high-level peaks and pits<a class="anchor" aria-label="anchor" href="#bertopic-to-find-high-level-peaks-and-pits"><i class="fas fa-link"></i></a>
+</h2>
 <p>So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate to.</p>
 <p>To do this, we employ topic modelling via <a href="https://aoiferyan-sc.github.io/BertopicR/">BERTopicR</a> to identifying high-level topics that emerge within the peak and pit conversation. This is done separately for each product and peak/pit dataset (i.e. there will be one BERTopic model for product A peaks, another BERTopic model for product A pits, an additional BERTopic model for product B peaks etc).</p>
 <p>As there is already <a href="https://aoiferyan-sc.github.io/BertopicR/">good documentation on BERTopicR</a> this section will not go into any technical detail for BERTopicR implementation.</p>
+</div>
+<div id="step-eight" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Brand Love Emotion States<a class="anchor" aria-label="anchor" href="#step-eight"><i class="fas fa-link"></i></a>
+</h2>
+<p>As outlined in the introduction, Microsoft are pushing for peak and pit posts to be linked to their “Brand Love” framework:</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="img/brand_love_emotions.png" alt="Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy" width="1124"><p class="caption">
+Figure 3.1: Microsoft Brand Love Framework from the powerpoint ‘All Human Emotionality References Deck All Audiences’ … catchy
+</p>
+</div>
+<p>This framework sees the concept of “Brand Love” being split into two distinct groups of “Emotion States”, the first group contributing towards how a product or brand makes ones life better, and includes the concepts of:</p>
+<ul>
+<li>Simplifying tech</li>
+<li>Feeling connected</li>
+<li>Feeling empowered</li>
+<li>Being inspired</li>
+<li>Feeling joy</li>
+</ul>
+<p>The second group contributes to a more holistic overview of the product or brand. Microsoft thinks of this as “making the world better” and includes concepts of:</p>
+<ul>
+<li>Security</li>
+<li>Improving society</li>
+<li>Doing the right thing</li>
+<li>Delivering on promises</li>
+<li>Sharing values with the user</li>
+</ul>
+<p>These are all broad concepts that Microsoft will tweak based on their specific marketing purpose (i.e. different audiences), but we need to find the core make up of each Emotion State.</p>
+<p>We have not yet built out a model or workflow for all 10 Emotion State classifications. But currently our implementation for the “making my life better” concepts involves using custom GPT-3.5 prompts for each of the emotion states. Despite the outcome of the analysis being <em>multilabel</em>, we achieve this by performing many binary classification models (i.e. “does the post contain the concept of simplifying tech” - “Yes” or “No”). Whilst this is not the most streamlined approach, initial trials showed trying true multilabel classification with a long and detailed prompt overwhelmed the model and produced incorrect classifications (determined by human evaluation).</p>
+<blockquote>
+<p>This section will continue to be updated during the current project as we iterate on our approach to classify all 10 emotion states.</p>
+</blockquote>
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="step-six.html"><span class="header-section-number">9</span> Step 6: The metal detector, GPT-3.5</a></div>
-<div class="next"><a href="step-eight.html"><span class="header-section-number">11</span> Step 8: Brand Love Emotion States</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#step-seven"><span class="header-section-number">10</span> Step 7: BERTopic to find high-level peaks and pits</a></li></ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/09-bertopic.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/09-bertopic.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

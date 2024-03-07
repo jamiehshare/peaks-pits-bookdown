@@ -19,3 +19,4 @@ step-six
 step-seven
 step-eight
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
+bertopic-to-find-high-level-peaks-and-pits
