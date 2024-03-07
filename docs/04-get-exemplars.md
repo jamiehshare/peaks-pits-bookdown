@@ -26,9 +26,9 @@ There is no perfect number of exemplars to find per class. Whilst in general mor
 
 An additional important aspect of this step is the sentiment distribution of our exemplars for each peak/pit label. If we end up obtaining peaks that are only positive sentiment, pits that are only negative sentiment, and neither posts that are only neutral, there is a serious risk we fine-tune ourselves a glorified sentiment classifier. As such, it's important to track posts that are clearly strong in sentiment, but are not themselves peaks or pits.
 
-## OpenAI route
+## OpenAI route 
 
-After obtaining the appopriate dataset of ~600 posts, use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:
+After obtaining the appropriate dataset of ~600 posts, use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:
 
 ```
 import openai
@@ -152,9 +152,9 @@ read_csv("path/to/project/file/output_file_name.txt", col_names = F) %>%
 
 ## 🤗 SetFit route 
 
-> If using model created in 725 or more recent, note the change at the bottom of the page
+> If using a model created for project 725 or more recent, note the change at the bottom of the page
 
-As SetFit is required for this, we use `python` based scripts or notebooks to run inference over a pre-fine-tuned model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used. 
+We use `python` based scripts or notebooks to run inference over a previously fine-tuned SetFit model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used. The idea is that, hopefully, language between projects does not change too much so a previously created peaks and pits model should be good enough to identify exemplar peaks and pits without necessarily requiring perfect performance (because the next step has humans in the loop).
 
 We can load in our previous SetFit model (note this is project specific)...
 

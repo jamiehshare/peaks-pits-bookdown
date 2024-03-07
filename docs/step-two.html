@@ -44,7 +44,19 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Background information</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Introduction to Peaks and Pits</a></li>
+<li><a class="" href="high-level-overview.html"><span class="header-section-number">3</span> High-level overview</a></li>
+<li><a class="" href="step-one.html"><span class="header-section-number">4</span> Step 1: Obtain posts</a></li>
+<li><a class="active" href="step-two.html"><span class="header-section-number">5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li>
+<li><a class="" href="step-three.html"><span class="header-section-number">6</span> Step 3: The human touch- find the exemplars</a></li>
+<li><a class="" href="step-four.html"><span class="header-section-number">7</span> Step 4: Fine-tune the SetFit model</a></li>
+<li><a class="" href="step-five.html"><span class="header-section-number">8</span> Step 5: Run inference over all project data</a></li>
+<li><a class="" href="step-six.html"><span class="header-section-number">9</span> Step 6: The metal detector, GPT-3.5</a></li>
+<li><a class="" href="step-seven.html"><span class="header-section-number">10</span> Step 7: Downstream flourishes</a></li>
+<li><a class="" href="resources.html"><span class="header-section-number">11</span> Resources</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
@@ -78,7 +90,7 @@
 <h2>
 <span class="header-section-number">5.1</span> OpenAI route<a class="anchor" aria-label="anchor" href="#openai-route"><i class="fas fa-link"></i></a>
 </h2>
-<p>After obtaining the appopriate dataset of ~600 posts, use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:</p>
+<p>After obtaining the appropriate dataset of ~600 posts, use VS Code to ping the GPT-3.5 model API using the following script, changing the Prompt as necessary:</p>
 <pre><code>import openai
 import pandas as pd
 import tenacity
@@ -199,9 +211,9 @@ read_csv("path/to/project/file/output_file_name.txt", col_names = F) %&gt;%
 <span class="header-section-number">5.2</span> 🤗 SetFit route<a class="anchor" aria-label="anchor" href="#setfit-route"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>If using model created in 725 or more recent, note the change at the bottom of the page</p>
+<p>If using a model created for project 725 or more recent, note the change at the bottom of the page</p>
 </blockquote>
-<p>As SetFit is required for this, we use <code>python</code> based scripts or notebooks to run inference over a pre-fine-tuned model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used.</p>
+<p>We use <code>python</code> based scripts or notebooks to run inference over a previously fine-tuned SetFit model (defined here as a pre-trained model that has been fine-tuned in a past project). It is recommended that Google Colab is used. The idea is that, hopefully, language between projects does not change too much so a previously created peaks and pits model should be good enough to identify exemplar peaks and pits without necessarily requiring perfect performance (because the next step has humans in the loop).</p>
 <p>We can load in our previous SetFit model (note this is project specific)…</p>
 <pre><code># Load in libraries:
 
@@ -243,15 +255,20 @@ output_df.to_csv("sample_predictions.csv", index = False)
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="step-one.html"><span class="header-section-number">4</span> Step 1: Obtain posts</a></div>
+<div class="next"><a href="step-three.html"><span class="header-section-number">6</span> Step 3: The human touch- find the exemplars</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#step-two"><span class="header-section-number">5</span> Step 2: Identify project-specific exemplar peaks and pits</a></li>
+<li><a class="nav-link" href="#openai-route"><span class="header-section-number">5.1</span> OpenAI route</a></li>
+<li><a class="nav-link" href="#setfit-route"><span class="header-section-number">5.2</span> 🤗 SetFit route</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/04-get-exemplars.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/04-get-exemplars.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
