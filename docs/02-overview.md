@@ -1,6 +1,6 @@
 # High-level overview {#high-level-overview} 
 
-## Core steps of a peaks and project {#core-steps}
+## Core steps of a peaks and project
 
 Peaks and pits have gone through many iterations throughout the past year and a half. Currently, the general workflow is
 
@@ -14,6 +14,6 @@ Peaks and pits have gone through many iterations throughout the past year and a 
 8. [Utilize GPT-3.5 for multilabel classification of Brand Love Emotion States in peak and pit posts](#step-eight)
 
 <div class="figure">
-<img src="./img/ar_workflow.png" alt="Schematic workflow from Project 706" width="908" />
+<img src="./img/ar_workflow.png" alt="Schematic workflow from Project 706" width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-1)Schematic workflow from Project 706</p>
 </div>

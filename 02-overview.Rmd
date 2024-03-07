@@ -1,6 +1,6 @@
 # High-level overview {#high-level-overview} 
 
-## Core steps of a peaks and project {#core-steps}
+## Core steps of a peaks and project
 
 Peaks and pits have gone through many iterations throughout the past year and a half. Currently, the general workflow is
 
@@ -13,6 +13,6 @@ Peaks and pits have gone through many iterations throughout the past year and a 
 7. [Conduct topic modelling via BERTopic over peaks and pits separately to identify high level topics for each brand x peak/pit](#step-seven)
 8. [Utilize GPT-3.5 for multilabel classification of Brand Love Emotion States in peak and pit posts](#step-eight)
 
-```{r, fig.cap = "Schematic workflow from Project 706", echo = FALSE}
+```{r, fig.cap = "Schematic workflow from Project 706", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("./img/ar_workflow.png")
 ```

@@ -12,7 +12,7 @@ As there is already [good documentation on BERTopicR](https://aoiferyan-sc.githu
 As outlined in the introduction, Microsoft are pushing for peak and pit posts to be linked to their "Brand Love" framework: 
 
 <div class="figure">
-<img src="./img/brand_love_emotions.png" alt="Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy" width="1124" />
+<img src="./img/brand_love_emotions.png" alt="Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy" width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-1)Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy</p>
 </div>
 

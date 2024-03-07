@@ -4,7 +4,7 @@ Irrespective of the approach used in the [previous step](#killer-examples), Step
 
 These should be saved in a Google Sheet, with one tab/worksheet per product and classification (i.e. `productA_peak`; `productA_pit`; `productB_peak`; `productB_pit` and individually classified by eye as below:
 
-```{r, fig.cap = "Example Google Sheet", echo = FALSE}
+```{r, fig.cap = "Example Google Sheet", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("./img/gsheet_eg.png")
 ```
 

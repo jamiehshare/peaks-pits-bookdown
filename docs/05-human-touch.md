@@ -5,7 +5,7 @@ Irrespective of the approach used in the [previous step](#killer-examples), Step
 These should be saved in a Google Sheet, with one tab/worksheet per product and classification (i.e. `productA_peak`; `productA_pit`; `productB_peak`; `productB_pit` and individually classified by eye as below:
 
 <div class="figure">
-<img src="./img/gsheet_eg.png" alt="Example Google Sheet" width="1034" />
+<img src="./img/gsheet_eg.png" alt="Example Google Sheet" width="100%" />
 <p class="caption">(\#fig:unnamed-chunk-1)Example Google Sheet</p>
 </div>
 

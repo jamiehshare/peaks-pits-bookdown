@@ -11,7 +11,7 @@ As there is already [good documentation on BERTopicR](https://aoiferyan-sc.githu
 
 As outlined in the introduction, Microsoft are pushing for peak and pit posts to be linked to their "Brand Love" framework: 
 
-```{r, fig.cap = "Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy", echo = FALSE}
+```{r, fig.cap = "Microsoft Brand Love Framework from the powerpoint 'All Human Emotionality References Deck All Audiences' ... catchy", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("./img/brand_love_emotions.png")
 ```
 
