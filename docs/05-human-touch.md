@@ -1,4 +1,4 @@
-# Step 3: The human touch- find the exemplars {#step-three}
+# The human touch- find the exemplars (Step 3) {#step-three}
 
 Irrespective of the approach used in the [previous step](#killer-examples), Step 3 requires us to read the sample of peaks and pits identified using human reasoning to find exemplar posts.
 

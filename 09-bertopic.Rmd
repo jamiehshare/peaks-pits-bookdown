@@ -1,4 +1,4 @@
-# Step 7: Downstream flourishes {#step-seven}
+# Downstream flourishes (Step 7) {#step-seven}
 
 ## BERTopic to find high-level peaks and pits
 So now we have an extremely refined set of posts classified as either peak or pits. The next step is to identify what these moments actually relate to.

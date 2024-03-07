@@ -1,5 +1,5 @@
 --- 
-title: "Peaks and Pits 🏔 🕳️️"
+title: "Peaks and Pits Playbook 🏔 🕳️️"
 author: "Jamie Hudson"
 date: "2024-03-07"
 site: bookdown::bookdown_site

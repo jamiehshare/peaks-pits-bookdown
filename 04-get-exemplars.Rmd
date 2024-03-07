@@ -1,4 +1,4 @@
-# Step 2: Identify project-specific exemplar peaks and pits {#step-two}
+# Identify project-specific exemplar peaks and pits (Step 2) {#step-two}
 
 Each peak and pit project we work on has the potential to introduce 'domain' specific language, which our model may not have seen before. This gives our model the best chance to identify emotional moments appropriate to the project/data at hand.
 

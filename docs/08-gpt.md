@@ -1,4 +1,4 @@
-# Step 6: The metal detector, GPT-3.5 {#step-six}
+# The metal detector, GPT-3.5 (Step 6) {#step-six}
 
 During [step 5](#setfit-inference) we obtained peak and pit classification using few-shot classification with SetFit. The benefit of this approach (as outlined previously) is its speed and ability to classify with very few labelled samples due to contrastive learning. 
 

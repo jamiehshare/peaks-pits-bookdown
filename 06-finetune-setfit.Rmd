@@ -1,4 +1,4 @@
-# Step 4: Fine-tune the SetFit model {#step-four}
+# Fine-tune the SetFit model (Step 4) {#step-four}
 
 The [SetFit documentation](https://huggingface.co/docs/setfit/index) provides a really nice overview of what SetFit actually is behind the scenes (very DS heavy, so analysts do not worry about understanding all of this) why this approach is suitable, and how to implement it.
 

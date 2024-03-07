@@ -1,4 +1,4 @@
-# Step 5: Run inference over all project data {#step-five}
+# Run inference over all project data (Step 5) {#step-five}
 
 It is finally time to infer whether the project data contain peaks or pits by using our fine-tuned SetFit model to classify the posts.
 
