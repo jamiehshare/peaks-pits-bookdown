@@ -19,6 +19,8 @@ csl: chicago-fullnote-bibliography.csl
 
 This guide aims to provide a comprehensive overview of the methodologies involved in Peaks and Pits projects. Since the revival of the Peaks and Pits concept in late 2022, there have been multiple iterations tailored to various stakeholders, each with subtle variations in focus.
 
+We recommend reading the [Introduction](#intro) and [High-Level Overview](#high-level-overview) sections before beginning any Peak and Pit project, as well as checking out the [Resources](#resources) page where there are links to helpful documentation ranging from high-level rationale of peaks and pits (from David Evans himself) to detailed academic papers introducing 🤗 SetFit. Doing so will help set the stage and guide you in planning your approach for the project. You can then use the rest of the guide as a resource as you progress through the project.
+
 ## Consistent Framework
 
 Despite these variations, I believe the fundamental framework of Peaks and Pits projects will remain stable going forward. Central to this approach is the identification, measurement, and categorisation of peaks and pits. This core process is crucial for comprehensively understanding and interpreting complex psychological phenomena.

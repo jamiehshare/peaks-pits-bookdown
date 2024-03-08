@@ -4,6 +4,7 @@ bookdown::bs4_book:
     base_font:
       google:
         family: Lato
+        wght: ['400', '700']
     heading_font:
       google:
         family: DM Serif Text

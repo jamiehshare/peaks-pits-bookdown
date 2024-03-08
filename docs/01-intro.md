@@ -8,7 +8,7 @@ The Heaths emphasise that both peak and pit moments are crucial in shaping our l
 
 A key aspect of peaks and pits are that they are memorable experiences, that emotionally resonate with the person experiencing them. Dan Heath explains this extremely well (in my opinion) through what he calls the Disney paradox.
 
-> ***The Disney Paradox***
+> **The Disney Paradox**
 > 
 > There is a puzzle about our memories of experiences. Imagine going to a Disney theme park; if one was to sample their happiness level over a bunch of different moments throughout the day, the majority of these moments one would probably be happier sitting at home- it's less crowded, food isn't overpriced etc. However, reflecting on the Disney trip it's likely to be one of the highlights of the year. Why is that? Our memories of experiences are not fair, and we don't just take and average of our moment-by-moment sensations when we reflect on our experience. Rather, we remember snippets, scenes, and moments. In particular there are two moments we disproportionately remember- the peak (or pit) of the experience (the best or worst moment), and the ending. So, looking back on the Disney trip it's the rollercoaster moment, family time, and surprises that are remembered, we don't remember the moment-to-moment frustrations and irritability. 
 
