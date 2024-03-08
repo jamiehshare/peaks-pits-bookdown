@@ -18,8 +18,8 @@ step-four
 step-five
 step-six
 step-seven
-bertopic-to-find-high-level-peaks-and-pits
-step-eight
+step-seven-a
+step-seven-b
 resources
 previous-projects
 useful-reading
