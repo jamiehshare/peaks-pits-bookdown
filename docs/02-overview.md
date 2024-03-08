@@ -5,7 +5,7 @@
 Peaks and pits have gone through many iterations throughout the past year and a half. Currently, the general workflow is
 
 1. [Extract brand/product mentions from Sprinklr (the start of any project)](#step-one)
-2. [Classify a sample of posts (of each sentiment) using GPT-3.5 OR the *latest* SetFit model that has been developed (i.e. the one from the previous project) to quickly identify peaks and pits](#step-two)
+2. [Classify a sample of posts (of each sentiment) using GPT-3.5 **OR** one of the latest SetFit model that has been developed (e.g. the one from the previous project) to quickly identify peaks and pits](#step-two)
 3. [Human review to select exemplar peaks and pits from these 'crudely identified posts'](#step-three)
 4. [Fine-tune the SetFit model using selected exemplar posts (from current project and previous projects)](#step-four)
 5. [Run inference of this fine-tuned model over all of the project specific data](#step-five)

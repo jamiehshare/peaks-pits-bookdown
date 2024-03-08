@@ -12,7 +12,7 @@ bookdown::bs4_book:
     code_font:
       google:
         # arguments to sass::font_google()
-        family: DM Mono
+        family: Monaco
         local: false
   repo: https://github.com/rstudio/bookdown-demo
 bookdown::pdf_book:
